@@ -3,15 +3,15 @@ using namespace std;
 void myFunction();
 
 int main() {
-   int x;
+int x;
     int arr[5];
     string list;
     for (int i = 0; i < 5; i = i + 1) {
         
         cout << "Escriba un numero: ";
         cin >> x;
-        arr[i]=x;   
-    } 
+        arr[i]=x;
+    }
 
     cout << "------------------";
     myFunction(arr[5]);
