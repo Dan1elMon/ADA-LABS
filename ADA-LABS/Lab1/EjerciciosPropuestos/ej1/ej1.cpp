@@ -2,15 +2,26 @@
 using namespace std;
 
 int main() {
-  int x, y,z;
-  int prod;
-  cout << "Escriba un numero: ";
-  cin >> x;
-  cout << "Escriba un numero: ";
-  cin >> z;
-  cout << "Type another number: ";
-  cin >> y;
-  prod = x *y*z;
-  cout << "Elproducto es: " << prod;
-  return 0; 
+    int n;
+
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "La cantidad de elementos debe ser mayor que 0." << endl;
+        return 1;
+    }
+
+    int arr[n];
+
+    int multiplicacion = 1;
+    for (int i = 0; i < n; i++) {
+        cout << "Ingrese el elemento " << i + 1 << ": ";
+        cin >> arr[i];
+        multiplicacion *= arr[i];
+    }
+
+    cout << "El resultado de la multiplicación es: " << multiplicacion << endl;
+
+    return 0;
 }
