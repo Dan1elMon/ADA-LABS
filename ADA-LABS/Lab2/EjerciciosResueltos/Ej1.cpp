@@ -2,12 +2,18 @@
 using namespace std;
 
 int busquedaBinaria(int x, int n, int v[]) {
-    int i = -1, d = n;
+    // Si x es mayor que todos los elementos en el arreglo
+    if (v[n-1] < x) return n;
+    // Si x es menor o igual al primer elemento en el arreglo
+    if (x <= v[0]) return 0;
 
-    while (i < d - 1) {
+    // Ahora sabemos que v[0] < x <= v[n-1]
+    int i = 0, d = n - 1;
+
+    while (i < d) {
         int m = (i + d) / 2;
         if (v[m] < x)
-            i = m;
+            i = m + 1;
         else
             d = m;
     }
@@ -16,7 +22,7 @@ int busquedaBinaria(int x, int n, int v[]) {
 }
 
 int main() {
-    int arreglo[] = {1, 3, 5, 7, 9, 11, 13, 15};
+    int arreglo[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
     int longitud = sizeof(arreglo) / sizeof(arreglo[0]);
     int numero = 8;
 
