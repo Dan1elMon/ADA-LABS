@@ -63,7 +63,7 @@ int main() {
     Node* sortedRecursive = mergesortRecursive(head);
 
     // imprime la lista ordenada
-    cout << "Lista ordenada (iterativa): ";
+    cout << "Lista ordenada (recursiva): ";
     printList(sortedRecursive);
 
     return 0;
