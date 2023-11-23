@@ -10,19 +10,19 @@ void intercambia(int &a, int &b) {
 void cribaRecursiva(int m, int v[], int f) {
     int izq = 2 * f;
     int der = 2 * f + 1;
-    int mayor = f;
+    int menor = f;
 
-    if (izq <= m && v[izq] > v[mayor]) {
-        mayor = izq;
+    if (izq <= m && v[izq] < v[menor]) {
+        menor = izq;
     }
 
-    if (der <= m && v[der] > v[mayor]) {
-        mayor = der;
+    if (der <= m && v[der] < v[menor]) {
+        menor = der;
     }
 
-    if (mayor != f) {
-        intercambia(v[f], v[mayor]);
-        cribaRecursiva(m, v, mayor);
+    if (menor != f) {
+        intercambia(v[f], v[menor]);
+        cribaRecursiva(m, v, menor);
     }
 }
 
@@ -37,24 +37,26 @@ void criba(int m, int v[]) {
 }
 
 void heapsort(int n, int v[]) {
-     for (int i = n; i >= 2; i--) {
+    // Construimos un Min-Heap
+    for (int i = n; i >= 1; i--) {
         criba(i, v);
-        cout << "Iteracion " << n - i + 1 << ": ";
-        for (int j = 1; j <= n; j++) {
-            cout << v[j] << " ";
-        }
-        cout << endl;
+    }
+
+    // Extraemos elementos del heap
+    for (int i = n; i >= 2; i--) {
+        intercambia(v[1], v[i]);
+        criba(i - 1, v);
     }
 }
 
 int main() {
-    int v[] = {2,4,1,24,31,2455,12,1224}; // Se inicia en 1-based indexing, el primer elemento es un 0 dummy.
+    int v[] = {16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4}; // Se inicia en 1-based indexing, el primer elemento es un 0 dummy.
 
     int n = sizeof(v) / sizeof(v[0]) - 1; // Restamos 1 para obtener el tamaño correcto.
 
     heapsort(n, v);
 
-    cout << "Arreglo ordenado: ";
+    cout << "Arreglo ordenado en orden descendente: ";
     for (int i = 1; i <= n; i++) {
         cout << v[i] << " ";
     }
